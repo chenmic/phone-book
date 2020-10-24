@@ -19,10 +19,12 @@ const contacts = [
 ]
 
 const findByName = (name) => {
+    // Multiple contacts with names that only differ in case isn't allowed
     return contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())
 }
 
 const addContact = (contact) => {
+    // Multiple contacts with the same name isn't allowed
     if (findByName(contact.name) === undefined) {
         contacts.push({name: contact.name, phone_number: contact.phone_number, address: contact.address})
         return true

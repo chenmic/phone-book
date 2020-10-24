@@ -14,7 +14,7 @@ exports.all = function (req, res) {
 }
 
 exports.find = function (req, res) {
-    var contact = findByName(req.params.name)
+    let contact = findByName(req.params.name)
     if (contact === undefined) {
         res.status(404)
         res.send(`No contact named ${req.params.name}.`);
@@ -25,12 +25,15 @@ exports.find = function (req, res) {
 }
 
 exports.add = function (req, res) {
-    var contact = JSON.parse(req.params.contact)
+    let contact = req.body
+
+    // Contact must contain all relevant schema fields
     if (!_.every(schema, (field) => _.has(contact, field))) {
         res.status(400)
         res.send('Missing contact fields.')
     }
     else {
+        // Contact can't be added if it's already exists
         let success = addContact(contact)
         if (!success) {
             res.status(409)
