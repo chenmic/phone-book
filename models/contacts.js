@@ -1,5 +1,6 @@
 
-exports.contacts = [
+const schema = ['name', 'phone_number', 'address']
+const contacts = [
     {
         name: 'Chen',
         phone_number: '+972 504123456',
@@ -16,3 +17,22 @@ exports.contacts = [
         address: '17 Mazeh Tel Aviv',
     }
 ]
+
+const findByName = (name) => {
+    return contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())
+}
+
+const addContact = (contact) => {
+    if (findByName(contact.name) === undefined) {
+        contacts.push({name: contact.name, phone_number: contact.phone_number, address: contact.address})
+        return true
+    }
+    else {
+        return false
+    }
+}
+
+exports.schema = schema
+exports.contacts = contacts
+exports.findByName = findByName
+exports.addContact = addContact

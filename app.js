@@ -12,6 +12,5 @@ app.listen(port, () => {
     console.log(`Listening on port ${port}`)
 })
 
-
 // Export for testing
 module.exports = app
