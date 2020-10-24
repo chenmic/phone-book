@@ -24,7 +24,7 @@ describe('Contacts', () => {
                 .get('/contacts/find/Chen')
                 .end((err, res) => {
 
-                    let contact = {
+                    const contact = {
                         name: 'Chen',
                         phone_number: '+972 504123456',
                         address: '',

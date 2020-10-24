@@ -25,13 +25,11 @@ const findByName = (name) => {
 
 const addContact = (contact) => {
     // Multiple contacts with the same name isn't allowed
-    if (findByName(contact.name) === undefined) {
+    if (!findByName(contact.name)) {
         contacts.push({name: contact.name, phone_number: contact.phone_number, address: contact.address})
         return true
     }
-    else {
-        return false
-    }
+    return false
 }
 
 exports.schema = schema
