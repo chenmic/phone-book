@@ -1,8 +1,10 @@
 
 const router = require('express').Router()
 
-const basicController = require('../controllers/basicController')
+const basic = require('./basic')
+const contacts = require('./contacts')
 
-router.get('/whos-there', basicController.basic_reply)
+router.use('/whos-there', basic)
+router.use('/contacts', contacts)
 
 module.exports = router
